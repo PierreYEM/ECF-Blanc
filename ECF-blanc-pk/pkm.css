@@ -3,7 +3,6 @@
 }
 
 body {
-    background-color: #F7F7F7;
     border-radius: 20px;
     margin: 0;
 }
@@ -11,8 +10,11 @@ body {
 #container {
     display: flex;
     flex-direction: column;
-    margin: 22px;
+    margin: 5px;
+    padding: 10px;
     justify-content: center;
+    background-color: #F7F7F7;
+    border-radius: 20px;
 }
 
 nav {
@@ -57,10 +59,12 @@ main {
     height: 100%;
     width: 100%;
     transition: ease-in-out 1s;
+    /* background-image: url(./pokéball.svg); */
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
-    animation: pushFromRight 1.5s ease-in-out forwards;
+    background-position: top;
+    border-radius: 20px;
+    /* animation: pushFromRight 1.5s ease-in-out forwards; */
 
 }
 
@@ -103,17 +107,19 @@ main {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    translate: 0 50px;
-    background-size: contain;
+    translate: 0 10px;
+    background-image: url(./pokéball.svg);
     background-repeat: no-repeat;
-    background-position: center;
-
+    background-position: absolute;
+    background-position-x: right;
+    background-position-y: top;
+    background-size: auto;
+    
 
 }
 
-#modalImg img {
-    scale: 5;
-}
+
+
 
 .arrow {
     width: 20%;
@@ -129,15 +135,41 @@ main {
     height: 10%;
     width: 100%;
     color: #FFFFFF;
+    z-index: 1;
 }
 
-.stat {
-    height: 60%;
+.detail {
+    display: flex;
+    flex-direction: column;
+    height: 65%;
     width: 98%;
     background-color: #FFFFFF;
     border-radius: 20px;
     margin-bottom: 4px;
+    z-index: 0;
 
+}
+
+.detail img {
+    object-fit: contain;
+    position: relative;
+    top: -30%;
+}
+
+.type {
+    height: 30%;
+    background-color: yellow;
+
+}
+
+.about {
+    height: 35%;
+    background-color: green;
+}
+
+.stat {
+    height: 35%;
+    background-color: grey;
 }
 
 .modalPkm {
@@ -175,7 +207,7 @@ main {
 
 
 /* ///////////////////////////////////////////// */
-.case {
+.bloc {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -220,6 +252,7 @@ main {
     justify-content: center;
     align-items: center;
 }
+
 
 @media only screen and (min-width: 768px) {
     .pokemon {
