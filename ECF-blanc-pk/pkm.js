@@ -1,40 +1,48 @@
-const api = 'https://pokeapi.co/api/v2/pokemon/';
-let bloc = document.querySelector('.bloc'),
+const api = 'https://pokeapi.co/api/v2/pokemon/',
+    ListNumber = 151;
+let bloc = document.querySelector('.blocList'),
     modal = document.querySelector('.modal'),
-    modalPkm = document.querySelector('.modalPkm'),
+    modalPkmName = document.querySelector('.modalPkmName'),
     modalImg = document.querySelector('#modalImg'),
-    arrow = document.querySelector('.arrow'),
+    arrow = document.querySelector('span'),
     modalNb = document.querySelector('.modalNb'),
-    modalDetail = document.querySelector('.detail');
+    modalDetail = document.querySelector('.detail'),
+    modalPkmImg = document.querySelector('.modalPkmImg');
 
 
-for (let i = 0; i < 151; i++) {
+
+createBlocList();
+
+var tabImage = [...document.querySelectorAll('.pkmimg')],
+    tabName = [...document.querySelectorAll('.name')],
+    tabPokemon = [...document.querySelectorAll('.pokemon')],
+    tabNumber = [...document.querySelectorAll('.number')];
+
+for (let i = 0; i < ListNumber; i++) {
 
     fetch(api + [i + 1] + '/')
         .then(data => data.json())
         .then(json => {
-            createBloc();
-            console.log(json);
-            let tabImage = [...document.querySelectorAll('.pkmimg')],
-                tabName = [...document.querySelectorAll('.name')],
-                tabPokemon = [...document.querySelectorAll('.pokemon')],
-                tabNumber = [...document.querySelectorAll('.number')];
+
+            // console.log(json);
+
 
             tabImage[i].style.backgroundImage = "url(" + json.sprites.front_default + ")";
-            tabName[i].innerHTML = json.name;
+            tabName[i].innerHTML = json.name.slice(0, 1).toUpperCase() + json.name.slice(1, json.name.length);
             tabNumber[i].innerHTML = `#${json.id.toString().padStart(3, 0)}`;
 
             // déclencheur au click
 
             tabPokemon[i].addEventListener('click', () => {
 
-                modalDetail.innerHTML = '<img src="' + json.sprites.other["official-artwork"].front_default + '">'
+                modalPkmImg.innerHTML = '<img src="' + json.sprites.other["official-artwork"].front_default + '">'
 
-                modalPkm.innerHTML = json.name;
+                modalPkmName.innerHTML = json.name.slice(0, 1).toUpperCase() + json.name.slice(1, json.name.length);
 
                 modalNb.innerHTML = `#${json.id.toString().padStart(3, 0)}`;
 
                 modal.classList.toggle('modalOn');
+
 
 
             });
@@ -45,20 +53,39 @@ for (let i = 0; i < 151; i++) {
 
         })
 }
-function createBloc() {
-    let pokemon = document.createElement('div'),
-        pkmimg = document.createElement('div'),
-        name = document.createElement('div'),
-        number = document.createElement('div');
-    pokemon.classList.add('pokemon');
-    pkmimg.classList.add('pkmimg');
-    name.classList.add('name');
-    number.classList.add('number');
-    bloc.appendChild(pokemon);
-    pkmimg.appendChild(number);
-    pokemon.appendChild(pkmimg);
-    pokemon.appendChild(name);
+let a = fetch("https://pokeapi.co/api/v2/pokemon/1")
+    .then(data => data.json())
+    .then(a => console.log(a))
+
+
+
+function createBlocList() {
+    for (let i = 0; i < ListNumber; i++) {
+        let pokemon = document.createElement('div'),
+            pkmimg = document.createElement('div'),
+            name = document.createElement('div'),
+            number = document.createElement('div');
+        pokemon.classList.add('pokemon');
+        pkmimg.classList.add('pkmimg');
+        name.classList.add('name');
+        number.classList.add('number');
+        bloc.appendChild(pokemon);
+        pokemon.appendChild(number);
+        pokemon.appendChild(pkmimg);
+        pokemon.appendChild(name);
+    }
 }
+function getNameStats() {
+    var hp = document.querySelector('.hp'),
+        atk = document.querySelector('.atk'),
+        def = document.querySelector('.def'),
+        satk = document.querySelector('.satk'),
+        sdef = document.querySelector('.sdef'),
+        spd = document.querySelector('.spd');
+
+    hp.innerHTML = json.stats[0].stat.name;
+}
+
 function createModal() {
 
 }
