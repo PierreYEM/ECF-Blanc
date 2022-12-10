@@ -1,5 +1,5 @@
 const api = 'https://pokeapi.co/api/v2/pokemon/',
-    listNumber = 151;
+    listNumber = 1;
 let bloc = document.querySelector('.blocList'),
     modal = document.querySelector('.modal'),
     modalPkmName = document.querySelector('.modalPkmName'),
@@ -8,6 +8,16 @@ let bloc = document.querySelector('.blocList'),
     modalNb = document.querySelector('.modalNb'),
     modalDetail = document.querySelector('.detail'),
     modalPkmImg = document.querySelector('.modalPkmImg');
+
+let type1 = document.querySelector(".type1"),
+    type2 = document.querySelector(".type2")
+
+let hp = document.querySelector('.hp'),
+    atk = document.querySelector('.atk'),
+    def = document.querySelector('.def'),
+    satk = document.querySelector('.satk'),
+    sdef = document.querySelector('.sdef'),
+    spd = document.querySelector('.spd');
 
 
 
@@ -24,7 +34,7 @@ for (let i = 0; i < listNumber; i++) {
         .then(data => data.json())
         .then(json => {
 
-            // console.log(json);
+            console.log(json);
 
             tabImage[i].innerHTML = '<img src="' + json.sprites.front_default + '">';
             // tabName[i].innerHTML = json.name.slice(0, 1).toUpperCase() + json.name.slice(1, json.name.length);
@@ -43,6 +53,16 @@ for (let i = 0; i < listNumber; i++) {
                 modal.classList.toggle('modalOn');
 
 
+
+                hp.innerHTML = json.stats[0].base_stat;
+                atk.innerHTML = json.stats[1].base_stat;
+                def.innerHTML = json.stats[2].base_stat;
+                satk.innerHTML = json.stats[3].base_stat;
+                sdef.innerHTML = json.stats[4].base_stat;
+                spd.innerHTML = json.stats[5].base_stat;
+
+                type1.innerHTML = json.types[0].type.name;
+                type2.innerHTML = json.types[1].type.name;
 
             });
             arrow.addEventListener('click', () => {
@@ -99,7 +119,12 @@ function getNameStats() {
     hp.innerHTML = json.stats[0].stat.name;
 }
 
-function createModal() {
-
+function statVar() {
+    let hp = document.querySelector('.hp'),
+        atk = document.querySelector('.atk'),
+        def = document.querySelector('.def'),
+        satk = document.querySelector('.satk'),
+        sdef = document.querySelector('.sdef'),
+        spd = document.querySelector('.spd');
 }
 
