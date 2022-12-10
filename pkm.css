@@ -209,7 +209,6 @@ span:hover {
 
 .aboutTitle,
 .statTitle {
-    height: 20%;
     text-align: center;
 }
 
@@ -241,7 +240,6 @@ span:hover {
     flex-direction: column;
     width: 10%;
     border-right: 5px solid #E0E0E0;
-    margin-bottom: 20px;
 }
 
 .statName div,
@@ -251,12 +249,35 @@ span:hover {
     align-items: center;
     height: 16.5%;
     background-color: grey;
+    border: 1px solid black;
 }
 
 .statValue {
     width: 10%;
     background-color: grey;
 }
+
+.statBar {
+    width: 80%;
+    background-color: white;
+}
+
+.statWrapbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 16.5%;
+    border: 1px solid black;
+}
+
+.statBarInit {
+    height: 40%;
+    width: 85%;
+    background-color: greenyellow;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
 
 
 /* ///////////////////////////////////////////// */
@@ -280,7 +301,7 @@ span:hover {
     display: flex;
     flex-direction: column;
     transition: 0.1s ease-in-out;
-
+    overflow: hidden;
 
 }
 
@@ -336,12 +357,11 @@ span:hover {
 .name {
     height: 25%;
     background-color: #E0E0E0;
-    border-bottom-right-radius: inherit;
-    border-bottom-left-radius: inherit;
     color: #FFFFFF;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 
@@ -384,5 +404,12 @@ span:hover {
         height: 330px;
 
     }
-}
 
+    .name {
+        font-size: 30px;
+    }
+
+    .number {
+        font-size: 30px;
+    }
+}
