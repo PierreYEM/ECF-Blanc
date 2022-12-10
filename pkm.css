@@ -160,6 +160,7 @@ span:hover {
 .detail {
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 65%;
     background-color: #FFFFFF;
     border-radius: 20px;
@@ -168,10 +169,14 @@ span:hover {
 
 }
 
+.detailWrapper {
+    height: 80%;
+    width: 90%;
+}
 
 
 .type {
-
+width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -198,24 +203,24 @@ span:hover {
     background-color: grey;
 }
 
-/* .type2 {
-    width: 40%;
+.description {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 30px;
+}
 
-    background-color: pink;
-} */
+
+
 
 .about {
-    height: 40%;
+    height: 55%;
     background-color: green;
 }
 
 .aboutTitle,
 .statTitle {
     text-align: center;
+    justify-self: start;
 }
 
 
@@ -232,8 +237,8 @@ span:hover {
 .stat {
     display: flex;
     flex-direction: column;
-    height: 40%;
-    justify-content: center;
+    height: 38%;
+    justify-content: space-between;
     align-items: center;
 
 }
@@ -242,7 +247,8 @@ span:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 80%;
+    width: 100%;
+    height: 70%;
 }
 
 .statName {
@@ -283,10 +289,26 @@ span:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+
     height: 100%;
     width: 70%;
 }
+
+.statBarHp,
+.statBarAtk,
+.statBarDef,
+.statBarSatk,
+.statBarSdef,
+.statBarSpd {
+    height: 100%;
+    width: 0;
+    transition: 2s;
+}
+
+.progressBar {
+}
+
+
 
 .statWrapbar {
     display: flex;
@@ -302,6 +324,8 @@ span:hover {
     background-color: #F7F7F7;
     border-radius: 30px;
     overflow: hidden;
+    border-radius: 30px;
+
 }
 
 

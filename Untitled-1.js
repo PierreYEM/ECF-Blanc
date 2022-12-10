@@ -28,21 +28,6 @@ console.log('test2',image[0]);
 
 
 
-// console.log('<img src=' + image[2] + '>');
-for (let i = 0; i < 2; i++) {
-    // fetch(api + [i])
-    //     .then(data => data.json())
-    //     .then(data => {
-
-    //         image[i] = data.sprites.front_default
-    //         console.log(image[i]);
-
-    //     })
-    // tabImage[i].innerHTML='<img src=' + json.sprites.front_default + '>';
-}
-
-
-
 function createBlocList() {
     for (let i = 0; i < 151; i++) {
         let pokemon = document.createElement('div'),
@@ -64,3 +49,6 @@ function createBlocList() {
         pokemon.setAttribute('data-id', i + 1)
     }
 }
+flavor_text_entries
+
+flavor_text_entries[0].language.name
