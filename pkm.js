@@ -49,6 +49,7 @@ for (let i = 0; i < listNumber; i++) {
 
             console.log(json);
 
+            ColorTypeIndex(json.types[0].type.name,i)
             ///la variable id sert de lien entre l'index et la modale
             let id = json.id;
 
@@ -100,7 +101,7 @@ for (let i = 0; i < listNumber; i++) {
 
                 ///type de pokemon
                 type1.innerHTML = json.types[0].type.name;
-                FrenchType(type1.innerHTML,i);
+                FrenchType(type1.innerHTML, i);
                 // type2.innerHTML = json.types[1].type.name;
 
 
@@ -218,79 +219,157 @@ function createBlocList() {
     }
 }
 
-function FrenchType(element,compteur) {
+function ColorTypeIndex(element, compteur) {
+    switch (element) {
+
+        case "water":
+            tabName[compteur].style.backgroundColor = "#6493EB";
+            break;
+        case "fire":
+            tabName[compteur].style.backgroundColor = "#F57D31";
+            break;
+        case "grass":
+            tabName[compteur].style.backgroundColor = "#74CB48";
+            break;
+        case "fighting":
+            tabName[compteur].style.backgroundColor = "#C12239";
+            break;
+        case "flying":
+            tabName[compteur].style.backgroundColor = "#A891EC";
+            break;
+        case "steel":
+            tabName[compteur].style.backgroundColor = "#B7B9D0";
+            break;
+        case "psychic":
+            tabName[compteur].style.backgroundColor = "#FB5584";
+            break;
+        case "rock":
+            tabName[compteur].style.backgroundColor = "#B69E31";
+            break;
+        case "fairy":
+            tabName[compteur].style.backgroundColor = "#E69EAC";
+            break;
+        case "ground":
+            tabName[compteur].style.backgroundColor = "#DEC16B";
+            break;
+        case "ghost":
+            tabName[compteur].style.backgroundColor = "#70559B";
+            break;
+        case "ice":
+            tabName[compteur].style.backgroundColor = "#9AD6DF";
+            break;
+        case "dark":
+            tabName[compteur].style.backgroundColor = "#75574C";
+            break;
+        case "bug":
+            tabName[compteur].style.backgroundColor = "#A7B723";
+            break;
+        case "normal":
+            tabName[compteur].style.backgroundColor = "#AAA67F";
+            break;
+        case "dragon":
+            tabName[compteur].style.backgroundColor = "#7037FF";
+            break;
+        case "electric":
+            tabName[compteur].style.backgroundColor = "#F9CF30";
+            break;
+        case "poison":
+            tabName[compteur].style.backgroundColor = "#A43E9E";
+            break;
+
+    }
+}
+
+function FrenchType(element, compteur) {
     switch (element) {
 
         case "water":
             type1.innerHTML = "eau";
-            type1.style.backgroundColor="#6493EB";
-            tabName[compteur].style.backgroundColor="#6493EB";
+            type1.style.backgroundColor = "#6493EB";
+            tabName[compteur].style.backgroundColor = "#6493EB";
             break;
         case "fire":
             type1.innerHTML = "feu";
-            type1.style.backgroundColor="#F57D31";
-            tabName[compteur].style.backgroundColor="#F57D31";
+            type1.style.backgroundColor = "#F57D31";
+            tabName[compteur].style.backgroundColor = "#F57D31";
             break;
         case "grass":
             type1.innerHTML = "plante";
-            type1.style.backgroundColor="#74CB48";
-            tabName[compteur].style.backgroundColor="#74CB48";
+            type1.style.backgroundColor = "#74CB48";
+            tabName[compteur].style.backgroundColor = "#74CB48";
             break;
         case "fighting":
             type1.innerHTML = "combat";
-            type1.style.backgroundColor="#C12239";
-            tabName[compteur].style.backgroundColor="#C12239";
+            type1.style.backgroundColor = "#C12239";
+            tabName[compteur].style.backgroundColor = "#C12239";
             break;
         case "flying":
             type1.innerHTML = "vol";
-            type1.style.backgroundColor="#A891EC";
-            tabName[compteur].style.backgroundColor="#A891EC";
+            type1.style.backgroundColor = "#A891EC";
+            tabName[compteur].style.backgroundColor = "#A891EC";
             break;
         case "steel":
             type1.innerHTML = "acier";
-            type1.style.backgroundColor="#B7B9D0";
-            tabName[compteur].style.backgroundColor="#B7B9D0";
+            type1.style.backgroundColor = "#B7B9D0";
+            tabName[compteur].style.backgroundColor = "#B7B9D0";
             break;
         case "psychic":
             type1.innerHTML = "psy";
-            type1.style.backgroundColor="#FB5584";
-            tabName[compteur].style.backgroundColor="#FB5584";
+            type1.style.backgroundColor = "#FB5584";
+            tabName[compteur].style.backgroundColor = "#FB5584";
             break;
         case "rock":
             type1.innerHTML = "roche";
-            type1.style.backgroundColor="#B69E31";
-            tabName[compteur].style.backgroundColor="#B69E31";
+            type1.style.backgroundColor = "#B69E31";
+            tabName[compteur].style.backgroundColor = "#B69E31";
             break;
         case "fairy":
             type1.innerHTML = "fée";
-            type1.style.backgroundColor="#E69EAC";
-            tabName[compteur].style.backgroundColor="#E69EAC";
+            type1.style.backgroundColor = "#E69EAC";
+            tabName[compteur].style.backgroundColor = "#E69EAC";
             break;
         case "ground":
             type1.innerHTML = "sol";
-            type1.style.backgroundColor="#DEC16B";
-            tabName[compteur].style.backgroundColor="#DEC16B";
+            type1.style.backgroundColor = "#DEC16B";
+            tabName[compteur].style.backgroundColor = "#DEC16B";
             break;
         case "ghost":
             type1.innerHTML = "spectre";
-            type1.style.backgroundColor="#70559B";
-            tabName[compteur].style.backgroundColor="#70559B";
+            type1.style.backgroundColor = "#70559B";
+            tabName[compteur].style.backgroundColor = "#70559B";
             break;
         case "ice":
             type1.innerHTML = "glace";
-            type1.style.backgroundColor="#9AD6DF";
-            tabName[compteur].style.backgroundColor="#9AD6DF";
+            type1.style.backgroundColor = "#9AD6DF";
+            tabName[compteur].style.backgroundColor = "#9AD6DF";
             break;
         case "dark":
             type1.innerHTML = "ténèbre";
-            type1.style.backgroundColor="#75574C";
-            tabName[compteur].style.backgroundColor="#75574C";
+            type1.style.backgroundColor = "#75574C";
+            tabName[compteur].style.backgroundColor = "#75574C";
             break;
         case "bug":
             type1.innerHTML = "insecte";
-            type1.style.backgroundColor="#A7B723";
-            tabName[compteur].style.backgroundColor="#A7B723";
+            type1.style.backgroundColor = "#A7B723";
+            tabName[compteur].style.backgroundColor = "#A7B723";
             break;
+        case "normal":
+            type1.style.backgroundColor = "#AAA67F";
+            tabName[compteur].style.backgroundColor = "#AAA67F";
+            break;
+        case "dragon":
+            type1.style.backgroundColor = "#7037FF";
+            tabName[compteur].style.backgroundColor = "#7037FF";
+            break;
+        case "electric":
+            type1.style.backgroundColor = "#F9CF30";
+            tabName[compteur].style.backgroundColor = "#F9CF30";
+            break;
+        case "poison":
+            type1.style.backgroundColor = "#A43E9E";
+            tabName[compteur].style.backgroundColor = "#A43E9E";
+            break;
+
 
     }
 }
