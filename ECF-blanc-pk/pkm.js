@@ -1,5 +1,5 @@
 const api = 'https://pokeapi.co/api/v2/pokemon/',
-    ListNumber = 151;
+    listNumber = 151;
 let bloc = document.querySelector('.blocList'),
     modal = document.querySelector('.modal'),
     modalPkmName = document.querySelector('.modalPkmName'),
@@ -18,7 +18,7 @@ var tabImage = [...document.querySelectorAll('.pkmimg')],
     tabPokemon = [...document.querySelectorAll('.pokemon')],
     tabNumber = [...document.querySelectorAll('.number')];
 
-for (let i = 0; i < ListNumber; i++) {
+for (let i = 0; i < listNumber; i++) {
 
     fetch(api + [i + 1] + '/')
         .then(data => data.json())
@@ -26,9 +26,8 @@ for (let i = 0; i < ListNumber; i++) {
 
             // console.log(json);
 
-
-            tabImage[i].style.backgroundImage = "url(" + json.sprites.front_default + ")";
-            tabName[i].innerHTML = json.name.slice(0, 1).toUpperCase() + json.name.slice(1, json.name.length);
+            tabImage[i].innerHTML = '<img src="' + json.sprites.front_default + '">';
+            // tabName[i].innerHTML = json.name.slice(0, 1).toUpperCase() + json.name.slice(1, json.name.length);
             tabNumber[i].innerHTML = `#${json.id.toString().padStart(3, 0)}`;
 
             // déclencheur au click
@@ -51,28 +50,42 @@ for (let i = 0; i < ListNumber; i++) {
             })
 
 
+
+        });
+    fetch('https://pokeapi.co/api/v2/pokemon-species/' + [i + 1] + '/')
+        .then(data => data.json())
+        .then(a => {
+            let name = a.names[4].name;
+            tabName[i].innerHTML = a.names[4].name.slice(0, 1).toUpperCase() + a.names[4].name.slice(1, a.names[4].name.length);
+
         })
 }
-let a = fetch("https://pokeapi.co/api/v2/pokemon/1")
-    .then(data => data.json())
-    .then(a => console.log(a))
+// let a = fetch('"https://pokeapi.co/api/v2/pokemon-species/'+ [i + 1] +'/"')
+//     .then(data => data.json())
+//     .then(a => console.log(a))
+
+
 
 
 
 function createBlocList() {
-    for (let i = 0; i < ListNumber; i++) {
+    for (let i = 0; i < listNumber; i++) {
         let pokemon = document.createElement('div'),
             pkmimg = document.createElement('div'),
             name = document.createElement('div'),
             number = document.createElement('div');
-        pokemon.classList.add('pokemon');
-        pkmimg.classList.add('pkmimg');
-        name.classList.add('name');
-        number.classList.add('number');
+
         bloc.appendChild(pokemon);
         pokemon.appendChild(number);
         pokemon.appendChild(pkmimg);
         pokemon.appendChild(name);
+
+        pokemon.classList.add('pokemon');
+        pkmimg.classList.add('pkmimg');
+        name.classList.add('name');
+        number.classList.add('number');
+
+        pokemon.setAttribute('data-id', i + 1)
     }
 }
 function getNameStats() {
@@ -89,3 +102,4 @@ function getNameStats() {
 function createModal() {
 
 }
+

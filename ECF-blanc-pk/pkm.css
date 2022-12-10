@@ -39,16 +39,10 @@ h1 {
     align-items: center;
 }
 
-img:first-child {
+#logo img {
     height: 40%;
 }
 
-main {
-    display: flex;
-    /* flex-direction: column; */
-    justify-content: center;
-
-}
 
 .modal {
     overflow-x: hidden;
@@ -56,7 +50,7 @@ main {
     width: 100vw;
     position: fixed;
     top: 0;
-    left: 0;
+    left: -100vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -146,10 +140,15 @@ span:hover {
 .modalPkmImg {
     display: flex;
     justify-content: center;
-    object-fit: contain;
-    position: relative;
-    top: 20%;
+    height: 90%;
     z-index: 1;
+}
+
+.modalPkmImg img {
+    height: inherit;
+    position: relative;
+    top: 15%;
+
 }
 
 .detail {
@@ -233,18 +232,20 @@ span:hover {
 }
 
 .statBloc {
+    display: flex;
     height: 85%;
 }
 
 .statName {
     display: flex;
     flex-direction: column;
-    width: 15%;
+    width: 10%;
     border-right: 5px solid #E0E0E0;
-margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
-.statName div {
+.statName div,
+.statValue div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -253,7 +254,7 @@ margin-bottom: 20px;
 }
 
 .statValue {
-    width: 80%;
+    width: 10%;
     background-color: grey;
 }
 
@@ -300,10 +301,17 @@ margin-bottom: 20px;
 }
 
 .pkmimg {
-    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55%;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.pkmimg img {
+    height: 100%;
 }
 
 .pkmimg:hover {
@@ -344,7 +352,7 @@ margin-bottom: 20px;
     }
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1440px) {
     nav {
         height: 15vh;
     }
@@ -372,8 +380,9 @@ margin-bottom: 20px;
     }
 
     .pokemon {
-        width: 230px;
-        height: 230px;
+        width: 330px;
+        height: 330px;
 
     }
 }
+
