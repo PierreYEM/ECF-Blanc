@@ -13,7 +13,8 @@ let bloc = document.querySelector('.blocList'),
     modalPkmImg = document.querySelector('.modalPkmImg');
 
 let type1 = document.querySelector(".type1"),
-    type2 = document.querySelector(".type2")
+    type2 = document.querySelector(".type2"),
+    typeChild = document.querySelector('.typeChild');
 
 ///variables de stats
 let hp = document.querySelector('.hp'),
@@ -100,10 +101,12 @@ for (let i = 0; i < listNumber; i++) {
 
                 /// spécifités About du pokemon
                 ability1.innerHTML = json.abilities[0].ability.name;
-                try { ability2.innerHTML = json.abilities[1].ability.name; }
-                catch (undefined) { ability2.parentNode.removeChild(ability2) }
 
-                
+                ///gestion d'erreur  ability2= undefined
+                try { ability2.innerHTML = json.abilities[1].ability.name; }
+                catch (undefined) { ability2.innerHTML = "" }
+
+
                 heightValue.innerHTML = json.height / 10 + "m";
                 weightValue.innerHTML = json.weight + "kg";
 
@@ -117,13 +120,11 @@ for (let i = 0; i < listNumber; i++) {
 
                 ///type de pokemon
                 type1.innerHTML = json.types[0].type.name;
-                FrenchType(type1.innerHTML, i);
+                FrenchType1(type1.innerHTML, i);
+
                 try { type2.innerHTML = json.types[1].type.name; }
-                catch (undefined) { type2.parentNode.removeChild(type2) }
-
-                // type2.innerHTML = "none"
-
-
+                catch (undefined) { type2.innerHTML = "aucun" }
+                FrenchType2(type2.innerHTML, i);
 
 
 
@@ -290,7 +291,7 @@ function ColorTypeIndex(element, compteur) {
 }
 
 ///Traduction des types et ajout des couleurs associées dans la modale
-function FrenchType(element, compteur) {
+function FrenchType1(element, compteur) {
     switch (element) {
 
         case "water":
@@ -384,4 +385,82 @@ function FrenchType(element, compteur) {
     }
 }
 
+function FrenchType2(element) {
+    switch (element) {
+
+        case "none":
+            type2.style.backgroundColor = "#666666";
+            break;
+        case "water":
+            type2.innerHTML = "eau";
+            type2.style.backgroundColor = "#6493EB";
+            break;
+        case "fire":
+            type2.innerHTML = "feu";
+            type2.style.backgroundColor = "#F57D31";
+            break;
+        case "grass":
+            type2.innerHTML = "plante";
+            type2.style.backgroundColor = "#74CB48";
+            break;
+        case "fighting":
+            type2.innerHTML = "combat";
+            type2.style.backgroundColor = "#C12239";
+            break;
+        case "flying":
+            type2.innerHTML = "vol";
+            type2.style.backgroundColor = "#A891EC";
+            break;
+        case "steel":
+            type2.innerHTML = "acier";
+            type2.style.backgroundColor = "#B7B9D0";
+            break;
+        case "psychic":
+            type2.innerHTML = "psy";
+            type2.style.backgroundColor = "#FB5584";
+            break;
+        case "rock":
+            type2.innerHTML = "roche";
+            type2.style.backgroundColor = "#B69E31";
+            break;
+        case "fairy":
+            type2.innerHTML = "fée";
+            type2.style.backgroundColor = "#E69EAC";
+            break;
+        case "ground":
+            type2.innerHTML = "sol";
+            type2.style.backgroundColor = "#DEC16B";
+            break;
+        case "ghost":
+            type2.innerHTML = "spectre";
+            type2.style.backgroundColor = "#70559B";
+            break;
+        case "ice":
+            type2.innerHTML = "glace";
+            type2.style.backgroundColor = "#9AD6DF";
+            break;
+        case "dark":
+            type2.innerHTML = "ténèbre";
+            type2.style.backgroundColor = "#75574C";
+            break;
+        case "bug":
+            type2.innerHTML = "insecte";
+            type2.style.backgroundColor = "#A7B723";
+            break;
+        case "normal":
+            type2.style.backgroundColor = "#AAA67F";
+            break;
+        case "dragon":
+            type2.style.backgroundColor = "#7037FF";
+            break;
+        case "electric":
+            type2.style.backgroundColor = "#F9CF30";
+            break;
+        case "poison":
+            type2.style.backgroundColor = "#A43E9E";
+            break;
+
+
+    }
+}
 

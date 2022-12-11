@@ -7,6 +7,7 @@ body {
     /* margin: 0; */
 }
 
+
 p {
     margin: 0;
 }
@@ -29,7 +30,6 @@ h3 {
 nav {
     display: flex;
     height: 10vh;
-    border-radius: 15px;
 }
 
 #logo {
@@ -65,7 +65,7 @@ h1 {
     background-repeat: no-repeat;
     background-position: top;
     border-radius: 20px;
-    transition: 1s ease-in-out;
+    transition: 0.7s ease-in-out;
     display: flex;
     flex-direction: column;
     z-index: 1;
@@ -76,7 +76,7 @@ h1 {
     position: fixed;
     top: 0;
     left: 0;
-    transition: 1ss ease-in-out;
+    transition: 0.7s ease-in-out;
 
 
 }
@@ -201,6 +201,7 @@ span:hover {
     border-radius: 30px;
     color: white;
     background-color: grey;
+    font-size: 14px;
 }
 
 .description {
@@ -509,6 +510,18 @@ span:hover {
 
 
 @media only screen and (min-width: 1024px) {
+    header {
+        margin-bottom: 100px;
+    }
+
+    /* nav {
+        background-color: #ec3622;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+    } */
+
     .modal {
         height: 90vh;
         width: 50vw;
@@ -570,4 +583,3 @@ span:hover {
         font-size: 30px;
     }
 }
-
