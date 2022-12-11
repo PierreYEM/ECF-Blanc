@@ -261,7 +261,6 @@ span:hover {
 .weightItem,
 .ability {
     display: flex;
-    justify-content: space-between;
     height: 70%;
     /* background-color: green; */
 }
@@ -269,9 +268,9 @@ span:hover {
 .heightIcon,
 .weightIcon {
     display: flex;
-    justify-content: end;
+    justify-content: center;
     align-items: center;
-    width: 40%;
+    width: 70%;
     /* background-color: blue; */
 }
 
@@ -329,8 +328,9 @@ span:hover {
 .statName {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     width: 10%;
+    height: 100%;
 }
 
 .vertibar {
@@ -356,15 +356,16 @@ span:hover {
 .statValue {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     width: 10%;
+    height: 100%;
     /* background-color: grey; */
 }
 
 .statBar {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
 
     height: 100%;
     width: 70%;
@@ -568,4 +569,8 @@ span:hover {
     .number {
         font-size: 30px;
     }
+}
+
+.test {
+    touch-action: none;
 }

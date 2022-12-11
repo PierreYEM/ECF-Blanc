@@ -42,8 +42,11 @@ createBlocList();
 var tabImage = [...document.querySelectorAll('.pkmimg')],
     tabName = [...document.querySelectorAll('.name')],
     tabPokemon = [...document.querySelectorAll('.pokemon')],
-    tabNumber = [...document.querySelectorAll('.number')];
+    tabNumber = [...document.querySelectorAll('.number')],
+    blocList = document.querySelector('.blocList');
 
+
+///Indexation des pokemon
 for (let i = 0; i < listNumber; i++) {
 
     fetch(api + [i + 1] + '/')
@@ -75,7 +78,7 @@ for (let i = 0; i < listNumber; i++) {
 
             /// Fenêtre modale
             tabPokemon[i].addEventListener('click', () => {
-
+                blocList.classList.toggle('test');
                 ///Obtenir le nom du pokemon en francais dans la modale
                 fetch(api2 + [i + 1] + '/')
                     .then(data => data.json())
@@ -87,19 +90,22 @@ for (let i = 0; i < listNumber; i++) {
                     })
 
                 ///Image du pokemon dans la fenêtre modale
-                modalPkmImg.innerHTML = '<img src="' + json.sprites.other["official-artwork"].front_default + '">'
+                modalPkmImg.innerHTML = '<img src="' + json.sprites.other["official-artwork"].front_default + '"alt="pokemon ' + modalPkmName.innerHTML + '">';
 
                 ///numéro de pokémon à 3 chiffres
                 modalNb.innerHTML = `#${json.id.toString().padStart(3, 0)}`;
 
-                ///classe pour slide la modale
+                ///classe pour slide/afficher la modale
                 modal.classList.toggle('modalOn');
 
-
+                /// spécifités About du pokemon
                 ability1.innerHTML = json.abilities[0].ability.name;
-                ability2.innerHTML = json.abilities[1].ability.name;
-                heightValue.innerHTML=json.height/10 +"m";
-                weightValue.innerHTML=json.weight+"kg";
+                try { ability2.innerHTML = json.abilities[1].ability.name; }
+                catch (undefined) { ability2.parentNode.removeChild(ability2) }
+
+                
+                heightValue.innerHTML = json.height / 10 + "m";
+                weightValue.innerHTML = json.weight + "kg";
 
                 ///Valeurs des stats
                 hp.innerHTML = json.stats[0].base_stat;
@@ -112,19 +118,12 @@ for (let i = 0; i < listNumber; i++) {
                 ///type de pokemon
                 type1.innerHTML = json.types[0].type.name;
                 FrenchType(type1.innerHTML, i);
-                // type2.innerHTML = json.types[1].type.name;
+                try { type2.innerHTML = json.types[1].type.name; }
+                catch (undefined) { type2.parentNode.removeChild(type2) }
+
+                // type2.innerHTML = "none"
 
 
-
-                // try { () => { type2.innerHTML = json.types[1].type.name; } }
-
-                // catch (uncaught) { type2.innerHTML = "none" }
-                // type2 = json.types[1];
-                // if (type2=true) {
-                //     type2.innerHTML = json.types[1].type.name;
-                // } else if (type2 == undefined) {
-                //     type2 = "None";
-                // }
 
 
 
@@ -228,7 +227,7 @@ function createBlocList() {
         pokemon.setAttribute('data-id', i + 1)
     }
 }
-
+///mettre des couleurs de types dans l'index
 function ColorTypeIndex(element, compteur) {
     switch (element) {
 
@@ -290,6 +289,7 @@ function ColorTypeIndex(element, compteur) {
     }
 }
 
+///Traduction des types et ajout des couleurs associées dans la modale
 function FrenchType(element, compteur) {
     switch (element) {
 
