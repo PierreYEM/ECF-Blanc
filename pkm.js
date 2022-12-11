@@ -29,8 +29,11 @@ let hp = document.querySelector('.hp'),
     statBarSdef = document.querySelector('.statBarSdef'),
     statBarSpd = document.querySelector('.statBarSpd');
 
-let description = document.querySelector('.descriptionText');
-
+let description = document.querySelector('.descriptionText'),
+    weightValue = document.querySelector('.weightValue'),
+    heightValue = document.querySelector('.heightValue'),
+    ability1 = document.querySelector('.ability1'),
+    ability2 = document.querySelector('.ability2');
 
 ///création des 151 blocs sans passer par le HTML et déclaration des tableaux
 createBlocList();
@@ -49,7 +52,9 @@ for (let i = 0; i < listNumber; i++) {
 
             console.log(json);
 
-            ColorTypeIndex(json.types[0].type.name,i)
+            /// ajouter les couleurs de type dans l'index
+            ColorTypeIndex(json.types[0].type.name, i)
+
             ///la variable id sert de lien entre l'index et la modale
             let id = json.id;
 
@@ -90,6 +95,11 @@ for (let i = 0; i < listNumber; i++) {
                 ///classe pour slide la modale
                 modal.classList.toggle('modalOn');
 
+
+                ability1.innerHTML = json.abilities[0].ability.name;
+                ability2.innerHTML = json.abilities[1].ability.name;
+                heightValue.innerHTML=json.height/10 +"m";
+                weightValue.innerHTML=json.weight+"kg";
 
                 ///Valeurs des stats
                 hp.innerHTML = json.stats[0].base_stat;

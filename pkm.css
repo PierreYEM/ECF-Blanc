@@ -14,7 +14,7 @@ p {
 h3 {
     margin: 0;
     font-size: 16px;
-    color: #E0E0E0;
+    color: #666666;
 }
 
 #container {
@@ -176,7 +176,7 @@ span:hover {
 
 
 .type {
-width: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -209,12 +209,14 @@ width: 100%;
     align-items: center;
 }
 
+.descriptionText {
+    font-size: 14px;
+}
 
 
 
 .about {
     height: 55%;
-    background-color: green;
 }
 
 .aboutTitle,
@@ -226,8 +228,81 @@ width: 100%;
 
 
 .spec {
-    height: 40%;
-    background-color: red;
+    display: flex;
+    justify-content: center;
+    height: 45%;
+    font-size: 14px;
+    /* background-color: red; */
+}
+
+.weight,
+.height,
+.moves {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 30%;
+}
+
+.weightTitle,
+.heightTitle,
+.movesTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 20%;
+    /* background-color: yellow; */
+    color: #666666;
+}
+
+.heightItem,
+.weightItem,
+.ability {
+    display: flex;
+    justify-content: space-between;
+    height: 70%;
+    /* background-color: green; */
+}
+
+.heightIcon,
+.weightIcon {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 40%;
+    /* background-color: blue; */
+}
+
+.heightValue,
+.weightValue {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weightIcon img,
+.heightIcon img {
+    height: 50%;
+}
+
+.ability {
+    display: flex;
+    flex-direction: column;
+}
+
+.ability1,
+.ability2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+}
+
+.weight,
+.moves {
+    /* background-color: grey; */
 }
 
 .description {
@@ -263,6 +338,7 @@ width: 100%;
     width: 3px;
     background-color: #E0E0E0;
     border-radius: 20px;
+    margin: 0 10px;
 }
 
 .statName div,
@@ -305,8 +381,7 @@ width: 100%;
     transition: 2s;
 }
 
-.progressBar {
-}
+.progressBar {}
 
 
 
@@ -420,6 +495,28 @@ width: 100%;
         width: 150px;
         height: 150px;
     }
+}
+
+
+@media only screen and (min-width: 1024px) {
+    .modal {
+        height: 90vh;
+        width: 50vw;
+        top: 5%;
+        left: -100vw;
+        transition: 2s;
+    }
+
+
+    .modalOn {
+        height: 90vh;
+        width: 40vw;
+        top: 5%;
+        left: 30%;
+        transition: 2s;
+
+    }
+
 }
 
 @media only screen and (min-width: 1440px) {
