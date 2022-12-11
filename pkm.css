@@ -384,17 +384,8 @@ span:hover {
 .progressBar {}
 
 
-
-.statWrapbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 17%;
-    /* border: 1px solid black; */
-}
-
 .statBarInit {
-    height: 30%;
+    height: 5%;
     width: 100%;
     background-color: #F7F7F7;
     border-radius: 30px;
@@ -495,6 +486,24 @@ span:hover {
         width: 150px;
         height: 150px;
     }
+
+    .modal {
+        height: 90vh;
+        width: 70vw;
+        top: 5%;
+        left: -100vw;
+        transition: 2s;
+    }
+
+
+    .modalOn {
+        height: 90vh;
+        width: 70vw;
+        top: 5%;
+        left: 15%;
+        transition: 2s;
+
+    }
 }
 
 
@@ -510,9 +519,9 @@ span:hover {
 
     .modalOn {
         height: 90vh;
-        width: 40vw;
+        width: 50vw;
         top: 5%;
-        left: 30%;
+        left: 25%;
         transition: 2s;
 
     }
