@@ -7,6 +7,16 @@ body {
     /* margin: 0; */
 }
 
+footer {
+    margin-top: 50px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bolder;
+    color: rgb(241, 50, 50);
+}
 
 p {
     margin: 0;
