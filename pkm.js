@@ -43,7 +43,6 @@ var tabImage = [...document.querySelectorAll('.pkmimg')],
     tabName = [...document.querySelectorAll('.name')],
     tabPokemon = [...document.querySelectorAll('.pokemon')],
     tabNumber = [...document.querySelectorAll('.number')],
-    blocList = document.querySelector('.blocList');
 
 
 ///Indexation des pokemon
@@ -78,7 +77,8 @@ for (let i = 0; i < listNumber; i++) {
 
             /// Fenêtre modale
             tabPokemon[i].addEventListener('click', () => {
-                blocList.classList.toggle('test');
+
+
                 ///Obtenir le nom du pokemon en francais dans la modale
                 fetch(api2 + [i + 1] + '/')
                     .then(data => data.json())
