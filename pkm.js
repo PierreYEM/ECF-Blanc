@@ -42,7 +42,7 @@ createBlocList();
 var tabImage = [...document.querySelectorAll('.pkmimg')],
     tabName = [...document.querySelectorAll('.name')],
     tabPokemon = [...document.querySelectorAll('.pokemon')],
-    tabNumber = [...document.querySelectorAll('.number')],
+    tabNumber = [...document.querySelectorAll('.number')];
 
 
 ///Indexation des pokemon
