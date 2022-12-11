@@ -388,7 +388,7 @@ function FrenchType1(element, compteur) {
 function FrenchType2(element) {
     switch (element) {
 
-        case "none":
+        case "aucun":
             type2.style.backgroundColor = "#666666";
             break;
         case "water":
