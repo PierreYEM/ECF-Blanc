@@ -3,7 +3,8 @@ const api = 'https://pokeapi.co/api/v2/pokemon/',
     listNumber = 151;
 
 ///Déclaration des variables de la modale
-let bloc = document.querySelector('.blocList'),
+let body = document.querySelector('body'),
+    bloc = document.querySelector('.blocList'),
     modal = document.querySelector('.modal'),
     modalPkmName = document.querySelector('.modalPkmName'),
     modalImg = document.querySelector('#modalImg'),
@@ -80,6 +81,9 @@ for (let i = 0; i < listNumber; i++) {
             tabPokemon[i].addEventListener('click', () => {
 
 
+                ///Désactiver le "toucher" sur mobile de l'arriere plan de la modale
+                body.classList.toggle('modalScrollOff');
+
                 ///Obtenir le nom du pokemon en francais dans la modale
                 fetch(api2 + [i + 1] + '/')
                     .then(data => data.json())
@@ -98,6 +102,7 @@ for (let i = 0; i < listNumber; i++) {
 
                 ///classe pour slide/afficher la modale
                 modal.classList.toggle('modalOn');
+                modal.setAttribute('aria-hidden', 'false');
 
                 /// spécifités About du pokemon
                 ability1.innerHTML = json.abilities[0].ability.name;
@@ -163,7 +168,7 @@ for (let i = 0; i < listNumber; i++) {
                     statBarSpd.style.cssText = 'width:' + json.stats[5].base_stat * 100 / 255 + "%;;background-color: #666666\;\
                 transition: 1.5s;'";
                     statBarSpd.classList.add('.progressBar');
-                }, 1000);
+                }, 800);
 
 
 
@@ -193,6 +198,8 @@ for (let i = 0; i < listNumber; i++) {
             ///bouton retour de modal
             arrow.addEventListener('click', () => {
                 modal.classList.toggle('modalOn');
+                modal.setAttribute('aria-hidden', 'true');
+                body.classList.toggle('modalScrollOff');
 
             })
 
