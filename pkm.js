@@ -199,7 +199,7 @@ for (let i = 0; i < listNumber; i++) {
             arrow.addEventListener('click', () => {
                 modal.classList.toggle('modalOn');
                 modal.setAttribute('aria-hidden', 'true');
-                body.classList.toggle('modalScrollOff');
+                // body.classList.toggle('modalScrollOff');
 
             })
 
