@@ -82,7 +82,7 @@ for (let i = 0; i < listNumber; i++) {
 
 
                 ///Désactiver le "toucher" sur mobile de l'arriere plan de la modale
-                body.classList.toggle('modalScrollOff');
+                // body.classList.toggle('modalScrollOff');
 
                 ///Obtenir le nom du pokemon en francais dans la modale
                 fetch(api2 + [i + 1] + '/')
