@@ -1,28 +1,34 @@
-const api="https://pokeapi.co/api/v2/pokemon/1";
+const api = "https://pokeapi.co/api/v2/pokemon/";
 
-let image =  "";
+
 let pokemon = document.createElement('div'),
     pkmimg = document.createElement('div'),
     name = document.createElement('div'),
     bloc = document.querySelector('.blocList'),
-    number = document.createElement('div');
-
+    number = document.createElement('div'),
+    pkm=[];
+var
+    tabName = [...document.querySelectorAll('.name')],
+    tabPokemon = [...document.querySelectorAll('.pokemon')],
+    tabNumber = [...document.querySelectorAll('.number')];
 
 
 createBlocList();
 
-// for (let i = 0; i < 151; i++) {
+getAllPkm(pkm);
 
 
-    const json =fetch("https://pokeapi.co/api/v2/pokemon/1")
-        .then(data => data.json())
-        .then(await (data => {image=data}));
-        console.log(image);
+async function getAllPkm(tab) {
+
+    for (let i = 0; i < 151; i++) {
+        tab[i] = await fetch(api + [i + 1] + '/')
+            .then(data => data.json());
+
+    }
+console.log(tab);
 
 
-
-
-
+}
 
 
 
