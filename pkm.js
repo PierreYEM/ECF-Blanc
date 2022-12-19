@@ -81,8 +81,9 @@ for (let i = 0; i < listNumber; i++) {
             tabPokemon[i].addEventListener('click', () => {
 
 
-                ///Désactiver le "toucher" sur mobile de l'arriere plan de la modale
-                // body.classList.toggle('modalScrollOff');
+                ///désactiver la barre de scroll durant la modale
+                body.classList.toggle('scrollOnOff');
+
 
                 ///Obtenir le nom du pokemon en francais dans la modale
                 fetch(api2 + [i + 1] + '/')
@@ -113,7 +114,7 @@ for (let i = 0; i < listNumber; i++) {
 
 
                 heightValue.innerHTML = json.height / 10 + "m";
-                weightValue.innerHTML = json.weight + "kg";
+                weightValue.innerHTML = json.weight/10 + "kg";
 
                 ///Valeurs des stats
                 hp.innerHTML = json.stats[0].base_stat;
@@ -135,18 +136,18 @@ for (let i = 0; i < listNumber; i++) {
 
                 ///barre stat progressive qui démarre après 1s
                 setTimeout(() => {
-                    statBarHp.style.width = json.stats[0].base_stat * 100 / 255 + '%';
-                    statBarAtk.style.width = json.stats[1].base_stat * 100 / 255 + '%';
-                    statBarDef.style.width = json.stats[2].base_stat * 100 / 255 + '%';
-                    statBarSatk.style.width = json.stats[3].base_stat * 100 / 255 + '%';
-                    statBarSdef.style.width = json.stats[4].base_stat * 100 / 255 + '%';
-                    statBarSpd.style.width = json.stats[5].base_stat * 100 / 255 + '%';
+                    // statBarHp.style.width = json.stats[0].base_stat * 100 / 255 + '%';
+                    // statBarAtk.style.width = json.stats[1].base_stat * 100 / 255 + '%';
+                    // statBarDef.style.width = json.stats[2].base_stat * 100 / 255 + '%';
+                    // statBarSatk.style.width = json.stats[3].base_stat * 100 / 255 + '%';
+                    // statBarSdef.style.width = json.stats[4].base_stat * 100 / 255 + '%';
+                    // statBarSpd.style.width = json.stats[5].base_stat * 100 / 255 + '%';
 
 
                     ///progress barre animée par stat
                     statBarHp.style.cssText = 'width:' + json.stats[0].base_stat * 100 / 255 + "%;;background-color: #666666\;\
                 transition: 1.5s;'";
-                    statBarHp.classList.add('.progressBar');
+                    // statBarHp.classList.add('.progressBar');
 
 
                     statBarAtk.style.cssText = 'width:' + json.stats[1].base_stat * 100 / 255 + "%;;background-color: #666666\;\
@@ -199,7 +200,16 @@ for (let i = 0; i < listNumber; i++) {
             arrow.addEventListener('click', () => {
                 modal.classList.toggle('modalOn');
                 modal.setAttribute('aria-hidden', 'true');
-                body.classList.toggle('modalScrollOff');
+                body.classList.toggle('scrollOnOff');
+
+
+                statBarHp.style.width = 0;
+                statBarAtk.style.width = 0;
+                statBarDef.style.width = 0;
+                statBarSatk.style.width = 0;
+                statBarSdef.style.width = 0;
+                statBarSpd.style.width = 0;
+
 
             })
 

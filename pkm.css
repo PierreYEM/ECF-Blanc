@@ -28,6 +28,10 @@ h3 {
     color: #666666;
 }
 
+.scrollOnOff {
+    overflow-y: hidden;
+}
+
 #container {
     display: flex;
     flex-direction: column;
@@ -84,9 +88,6 @@ h1 {
 
 }
 
-.modalScrollOff {
-    touch-action: none;
-}
 
 .modalCard {
     /* overflow-x: hidden; */
