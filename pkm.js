@@ -81,8 +81,9 @@ for (let i = 0; i < listNumber; i++) {
             tabPokemon[i].addEventListener('click', () => {
 
 
-                ///Désactiver le "toucher" sur mobile de l'arriere plan de la modale
-                // body.classList.toggle('modalScrollOff');
+                ///désactiver la barre de scroll durant la modale
+                body.classList.toggle('scrollOnOff');
+
 
                 ///Obtenir le nom du pokemon en francais dans la modale
                 fetch(api2 + [i + 1] + '/')
@@ -199,8 +200,15 @@ for (let i = 0; i < listNumber; i++) {
             arrow.addEventListener('click', () => {
                 modal.classList.toggle('modalOn');
                 modal.setAttribute('aria-hidden', 'true');
-                // body.classList.toggle('modalScrollOff');
+                body.classList.toggle('scrollOnOff');
 
+
+                statBarHp.style.width = 0;
+                statBarAtk.style.width = 0;
+                statBarDef.style.width = 0;
+                statBarSatk.style.width = 0;
+                statBarSdef.style.width = 0;
+                statBarSpd.style.width = 0;
             })
 
 
