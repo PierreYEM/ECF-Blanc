@@ -66,7 +66,7 @@ async function getPkm() {
         await fetch(api + [i + 1] + '/')
             .then(data => data.json())
             .then(data => {
-                tabPkm.push(data+"okay")
+                tabPkm.push(data)
 
             })
 
@@ -76,10 +76,15 @@ async function getPkm() {
                 tabDescription.push(data)
 
             })
+
+        tabFinal[i] = { ...tabPkm[i], ...tabDescription[i] }
+
+
+
     }
     console.log(tabPkm);
     console.log(tabDescription);
-
+    console.log(tabFinal);
 
 
 
