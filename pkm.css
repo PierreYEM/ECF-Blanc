@@ -80,7 +80,6 @@ h1 {
     z-index: 1;
 
     transition: 0.7s;
-
 }
 
 .modalOn {
@@ -88,10 +87,16 @@ h1 {
     top: 0;
     left: 0;
     transition: 0.7s ease-out;
-    background-color: #F7F7F799;
 
 }
 
+.overlay {
+    background-color: #F7F7F799;
+    transition: 0.5s ease-in-out;
+
+}
+
+.off {}
 
 .modalCard {
     /* overflow-x: hidden; */
@@ -103,6 +108,7 @@ h1 {
     justify-content: space-between;
     background-color: #666666;
     border-radius: 20px;
+    transition: 0.5s ease-in-out;
 }
 
 
@@ -228,6 +234,10 @@ span:hover {
     color: white;
     background-color: grey;
     font-size: 14px;
+}
+
+.type2 {
+    display: none;
 }
 
 .description {
@@ -481,6 +491,10 @@ span:hover {
 
 .pkmimg:hover {
     animation: move 0.4s linear infinite;
+}
+
+.display {
+    display: none;
 }
 
 @keyframes move {
