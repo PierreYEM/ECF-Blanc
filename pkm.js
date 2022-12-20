@@ -50,7 +50,7 @@ var tabImage = [...document.querySelectorAll('.pkmimg')],
 ///Indexation des pokemon
 for (let i = 0; i < listNumber; i++) {
 
-    fetch(api + [i + 1] + '/')
+    fetch(api+[i + 1] + '/')
         .then(data => data.json())
         .then(json => {
 
