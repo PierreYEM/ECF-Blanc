@@ -41,6 +41,10 @@ h3 {
     border-radius: 20px;
 }
 
+.scrollOnOff {
+    overflow-y: hidden;
+}
+
 nav {
     display: flex;
     height: 10vh;

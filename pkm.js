@@ -50,7 +50,7 @@ var tabImage = [...document.querySelectorAll('.pkmimg')],
 ///Indexation des pokemon
 for (let i = 0; i < listNumber; i++) {
 
-    fetch(api + [i + 1] + '/')
+    fetch(api+[i + 1] + '/')
         .then(data => data.json())
         .then(json => {
 
@@ -136,18 +136,18 @@ for (let i = 0; i < listNumber; i++) {
 
                 ///barre stat progressive qui démarre après 1s
                 setTimeout(() => {
-                    // statBarHp.style.width = json.stats[0].base_stat * 100 / 255 + '%';
-                    // statBarAtk.style.width = json.stats[1].base_stat * 100 / 255 + '%';
-                    // statBarDef.style.width = json.stats[2].base_stat * 100 / 255 + '%';
-                    // statBarSatk.style.width = json.stats[3].base_stat * 100 / 255 + '%';
-                    // statBarSdef.style.width = json.stats[4].base_stat * 100 / 255 + '%';
-                    // statBarSpd.style.width = json.stats[5].base_stat * 100 / 255 + '%';
+                    statBarHp.style.width = json.stats[0].base_stat * 100 / 255 + '%';
+                    statBarAtk.style.width = json.stats[1].base_stat * 100 / 255 + '%';
+                    statBarDef.style.width = json.stats[2].base_stat * 100 / 255 + '%';
+                    statBarSatk.style.width = json.stats[3].base_stat * 100 / 255 + '%';
+                    statBarSdef.style.width = json.stats[4].base_stat * 100 / 255 + '%';
+                    statBarSpd.style.width = json.stats[5].base_stat * 100 / 255 + '%';
 
 
                     ///progress barre animée par stat
                     statBarHp.style.cssText = 'width:' + json.stats[0].base_stat * 100 / 255 + "%;;background-color: #666666\;\
                 transition: 1.5s;'";
-                    // statBarHp.classList.add('.progressBar');
+                    statBarHp.classList.add('.progressBar');
 
 
                     statBarAtk.style.cssText = 'width:' + json.stats[1].base_stat * 100 / 255 + "%;;background-color: #666666\;\
@@ -202,15 +202,12 @@ for (let i = 0; i < listNumber; i++) {
                 modal.setAttribute('aria-hidden', 'true');
                 body.classList.toggle('scrollOnOff');
 
-
                 statBarHp.style.width = 0;
                 statBarAtk.style.width = 0;
                 statBarDef.style.width = 0;
                 statBarSatk.style.width = 0;
                 statBarSdef.style.width = 0;
                 statBarSpd.style.width = 0;
-
-
             })
 
 
