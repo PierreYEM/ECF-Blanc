@@ -109,11 +109,14 @@ async function getPkm() {
             ///désactiver la barre de scroll durant la modale
             body.classList.toggle('scrollOnOff');
 
+
             ///Obtenir les noms francais sur la modale ///
             modalPkmName.innerHTML = Pname.slice(0, 1).toUpperCase() + Pname.slice(1, Pname.length);
 
             ///Image du pokemon dans la fenêtre modale
             modalPkmImg.innerHTML = '<img src="' + tabFinal[i].sprites.other["official-artwork"].front_default + '"alt="pokemon ' + modalPkmName.innerHTML + '">';
+
+           console.log(modalPkmImg.innerHTML.img);
 
             ///numéro de pokémon à 3 chiffres
             modalNb.innerHTML = `#${tabFinal[i].id.toString().padStart(3, 0)}`;
