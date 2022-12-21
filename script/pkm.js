@@ -2,7 +2,6 @@ const api = 'https://pokeapi.co/api/v2/pokemon/',
     api2 = 'https://pokeapi.co/api/v2/pokemon-species/',
     listNumber = 151;
 
-
 ///Déclaration des variables de la modale
 let body = document.querySelector('body'),
     bloc = document.querySelector('.blocList'),
@@ -17,7 +16,6 @@ let body = document.querySelector('body'),
 let type1 = document.querySelector(".type1"),
     type2 = document.querySelector(".type2"),
     typeChild = document.querySelector('.typeChild');
-
 
 ///variables de stats
 let hp = document.querySelector('.hp'),
@@ -39,13 +37,6 @@ let description = document.querySelector('.descriptionText'),
     ability1 = document.querySelector('.ability1'),
     ability2 = document.querySelector('.ability2');
 
-
-
-
-let tabPkm = new Array,
-    tabDescription = new Array,
-    tabFinal = new Array;
-
 ///création des 151 blocs sans passer par le HTML et déclaration des tableaux
 createBlocList();
 
@@ -56,170 +47,184 @@ var tabImage = [...document.querySelectorAll('.pkmimg')],
     tabNumber = [...document.querySelectorAll('.number')];
 
 
+///Indexation des pokemon
+for (let i = 0; i < listNumber; i++) {
 
-getPkm();
+    fetch(api + [i + 1] + '/')
+        .then(data => data.json())
+        .then(json => {
 
-async function getPkm() {
+            console.log(json);
 
-    for (let i = 0; i < 151; i++) {
+            /// ajouter les couleurs de type dans l'index
+            ColorTypeIndex(json.types[0].type.name, i)
 
-        await fetch(api + [i + 1] + '/')
-            .then(data => data.json())
-            .then(data => {
-                tabPkm.push(data)
+            ///la variable id sert de lien entre l'index et la modale
+            let id = json.id;
 
+            ///Images des pokemon de l'index
+            tabImage[i].innerHTML = '<img src="' + json.sprites.front_default + '"alt="pokemon">';
+
+            ///numéro des pokémon de l'index à 3 chiffres
+            tabNumber[i].innerHTML = `#${json.id.toString().padStart(3, 0)}`;
+
+            ///Obtenir les noms francais sur l'index sans passer par le compteur initial
+            fetch(api2 + [i + 1] + '/')
+                .then(data => data.json())
+                .then(data => {
+                    let name = data.names[4].name;
+                    tabName[i].innerHTML = data.names[4].name.slice(0, 1).toUpperCase() + data.names[4].name.slice(1, data.names[4].name.length);
+                    modalPkmName.innerHTML = data.names[4].name.slice(0, 1).toUpperCase() + data.names[4].name.slice(1, data.names[4].name.length)
+                })
+
+            /// Fenêtre modale
+            tabPokemon[i].addEventListener('click', () => {
+
+
+                ///désactiver la barre de scroll durant la modale
+                body.classList.toggle('scrollOnOff');
+
+
+                ///Obtenir le nom du pokemon en francais dans la modale
+                fetch(api2 + [i + 1] + '/')
+                    .then(data => data.json())
+                    .then(data => {
+                        let name = data.names[4].name;
+
+                        ///Première lettre du pokémon en majuscule
+                        modalPkmName.innerHTML = data.names[4].name.slice(0, 1).toUpperCase() + data.names[4].name.slice(1, data.names[4].name.length)
+                    })
+
+                ///Image du pokemon dans la fenêtre modale
+                modalPkmImg.innerHTML = '<img src="' + json.sprites.other["official-artwork"].front_default + '"alt="pokemon ' + modalPkmName.innerHTML + '">';
+
+                ///numéro de pokémon à 3 chiffres
+                modalNb.innerHTML = `#${json.id.toString().padStart(3, 0)}`;
+
+                ///classe pour slide/afficher la modale
+                modal.classList.toggle('modalOn');
+                modal.setAttribute('aria-hidden', 'false');
+
+                /// spécifités About du pokemon
+                ability1.innerHTML = json.abilities[0].ability.name;
+
+                ///gestion d'erreur  ability2= undefined
+                try { ability2.innerHTML = json.abilities[1].ability.name; }
+                catch (undefined) { ability2.innerHTML = "" }
+
+
+                heightValue.innerHTML = json.height / 10 + "m";
+                weightValue.innerHTML = json.weight / 10 + "kg";
+
+                ///Valeurs des stats
+                hp.innerHTML = json.stats[0].base_stat;
+                atk.innerHTML = json.stats[1].base_stat;
+                def.innerHTML = json.stats[2].base_stat;
+                satk.innerHTML = json.stats[3].base_stat;
+                sdef.innerHTML = json.stats[4].base_stat;
+                spd.innerHTML = json.stats[5].base_stat;
+
+                ///type de pokemon
+                type1.innerHTML = json.types[0].type.name;
+                FrenchType1(type1.innerHTML, i);
+
+                ///cache le second type si inexistant///
+                if (tabFinal[i].types.length < 2) {
+                    type2.classList.add('display')
+                }
+                else {
+                    type2.classList.remove('display');
+                    type2.innerHTML = tabFinal[i].types[1].type.name;
+                }
+                FrenchType2(type2.innerHTML, i);
+
+
+
+                ///barre stat progressive qui démarre après 1s
+                setTimeout(() => {
+                    statBarHp.style.width = json.stats[0].base_stat * 100 / 255 + '%';
+                    statBarAtk.style.width = json.stats[1].base_stat * 100 / 255 + '%';
+                    statBarDef.style.width = json.stats[2].base_stat * 100 / 255 + '%';
+                    statBarSatk.style.width = json.stats[3].base_stat * 100 / 255 + '%';
+                    statBarSdef.style.width = json.stats[4].base_stat * 100 / 255 + '%';
+                    statBarSpd.style.width = json.stats[5].base_stat * 100 / 255 + '%';
+
+
+                    ///progress barre animée par stat
+                    statBarHp.style.cssText = 'width:' + json.stats[0].base_stat * 100 / 255 + "%;;background-color: #666666\;\
+                transition: 1.5s;'";
+                    statBarHp.classList.add('.progressBar');
+
+
+                    statBarAtk.style.cssText = 'width:' + json.stats[1].base_stat * 100 / 255 + "%;;background-color: #666666\;\
+                transition: 1.5s;'";
+                    statBarAtk.classList.add('.progressBar');
+
+                    statBarDef.style.cssText = 'width:' + json.stats[2].base_stat * 100 / 255 + "%;;background-color: #666666\;\
+                transition: 1.5s;'";
+                    statBarDef.classList.add('.progressBar');
+
+                    statBarSatk.style.cssText = 'width:' + json.stats[3].base_stat * 100 / 255 + "%;;background-color: #666666\;\
+                transition: 1.5s;'";
+                    statBarSatk.classList.add('.progressBar');
+
+                    statBarSdef.style.cssText = 'width:' + json.stats[4].base_stat * 100 / 255 + "%;;background-color: #666666\;\
+                transition: 1.5s;'";
+                    statBarSdef.classList.add('.progressBar');
+
+                    statBarSpd.style.cssText = 'width:' + json.stats[5].base_stat * 100 / 255 + "%;;background-color: #666666\;\
+                transition: 1.5s;'";
+                    statBarSpd.classList.add('.progressBar');
+                }, 800);
+
+
+
+                /// obtenir les descriptifs en francais
+                fetch(api2 + id + '/')
+                    .then(data => data.json())
+                    .then(json2 => {
+                        let tab = json2;
+                        console.log(tab);
+                        description.innerHTML = json2.flavor_text_entries[24].flavor_text;
+
+                    })
+
+
+
+
+
+
+
+            });
+
+
+
+
+
+
+            ///bouton retour de modal
+            arrow.addEventListener('click', () => {
+                modal.classList.toggle('modalOn');
+                modal.setAttribute('aria-hidden', 'true');
+                body.classList.toggle('scrollOnOff');
+
+                statBarHp.style.width = 0;
+                statBarAtk.style.width = 0;
+                statBarDef.style.width = 0;
+                statBarSatk.style.width = 0;
+                statBarSdef.style.width = 0;
+                statBarSpd.style.width = 0;
             })
 
-        await fetch(api2 + [i + 1] + '/')
-            .then(data => data.json())
-            .then(data => {
-                tabDescription.push(data)
-
-            })
-        ///fusion des objets JSON///
-        tabFinal[i] = { ...tabPkm[i], ...tabDescription[i] }
 
 
-
-        ///Images des pokemon de l'index
-        tabImage[i].innerHTML = '<img src="' + tabFinal[i].sprites.front_default + '"alt="pokemon">';
-
-        /// ajouter les couleurs de type dans l'index
-        ColorTypeIndex(tabFinal[i].types[0].type.name, i)
+        });
 
 
-        ///numéro des pokémon de l'index à 3 chiffres
-        tabNumber[i].innerHTML = `#${tabFinal[i].id.toString().padStart(3, 0)}`;
-
-
-        ///Obtenir les noms francais sur l'index ///
-        let Pname = tabFinal[i].names[4].name;
-        tabName[i].innerHTML = Pname.slice(0, 1).toUpperCase() + Pname.slice(1, Pname.length);
-
-
-
-        /// Fenêtre modale
-
-        tabPokemon[i].addEventListener('click', () => {
-
-            ///désactiver la barre de scroll durant la modale
-            body.classList.toggle('scrollOnOff');
-
-            ///Obtenir les noms francais sur la modale ///
-            modalPkmName.innerHTML = Pname.slice(0, 1).toUpperCase() + Pname.slice(1, Pname.length);
-
-            ///Image du pokemon dans la fenêtre modale
-            modalPkmImg.innerHTML = '<img src="' + tabFinal[i].sprites.other["official-artwork"].front_default + '"alt="pokemon ' + modalPkmName.innerHTML + '">';
-
-            ///numéro de pokémon à 3 chiffres
-            modalNb.innerHTML = `#${tabFinal[i].id.toString().padStart(3, 0)}`;
-
-            ///classe pour slide/afficher la modale
-            modal.classList.toggle('modalOn');
-            setTimeout(() => modal.classList.toggle('overlay'), 1000);
-
-            modal.setAttribute('aria-hidden', 'false');
-
-            /// spécifités About du pokemon
-            ability1.innerHTML = tabFinal[i].abilities[0].ability.name;
-
-            ///gestion d'erreur  ability2= undefined
-            try { ability2.innerHTML = tabFinal[i].abilities[1].ability.name; }
-            catch (undefined) { ability2.innerHTML = "" }
-
-            ///statistiques du pokémon///
-            heightValue.innerHTML = tabFinal[i].height / 10 + "m";
-            weightValue.innerHTML = tabFinal[i].weight / 10 + "kg";
-
-            ///Valeurs des stats
-            hp.innerHTML = tabFinal[i].stats[0].base_stat;
-            atk.innerHTML = tabFinal[i].stats[1].base_stat;
-            def.innerHTML = tabFinal[i].stats[2].base_stat;
-            satk.innerHTML = tabFinal[i].stats[3].base_stat;
-            sdef.innerHTML = tabFinal[i].stats[4].base_stat;
-            spd.innerHTML = tabFinal[i].stats[5].base_stat;
-
-            ///type de pokemon
-            type1.innerHTML = tabFinal[i].types[0].type.name;
-            FrenchType1(type1.innerHTML, i);
-            if (tabFinal[i].types[1].type.name) { type2.classList.toggle('display'); type2.classList.toggle('display') }
-
-            try { type2.innerHTML = tabFinal[i].types[1].type.name; }
-            catch (undefined) { type2.classList.toggle('display') }
-            FrenchType2(type2.innerHTML, i);
-
-            ///barre stat progressive qui démarre après 1s
-            setTimeout(() => {
-                statBarHp.style.width = tabFinal[i].stats[0].base_stat * 100 / 255 + '%';
-                statBarAtk.style.width = tabFinal[i].stats[1].base_stat * 100 / 255 + '%';
-                statBarDef.style.width = tabFinal[i].stats[2].base_stat * 100 / 255 + '%';
-                statBarSatk.style.width = tabFinal[i].stats[3].base_stat * 100 / 255 + '%';
-                statBarSdef.style.width = tabFinal[i].stats[4].base_stat * 100 / 255 + '%';
-                statBarSpd.style.width = tabFinal[i].stats[5].base_stat * 100 / 255 + '%';
-
-
-                ///progress barre animée par stat
-                statBarHp.style.cssText = 'width:' + tabFinal[i].stats[0].base_stat * 100 / 255 + "%;;background-color: #666666\;\
-                transition: 1.5s;'";
-                statBarHp.classList.add('.progressBar');
-
-
-                statBarAtk.style.cssText = 'width:' + tabFinal[i].stats[1].base_stat * 100 / 255 + "%;;background-color: #666666\;\
-                transition: 1.5s;'";
-                statBarAtk.classList.add('.progressBar');
-
-                statBarDef.style.cssText = 'width:' + tabFinal[i].stats[2].base_stat * 100 / 255 + "%;;background-color: #666666\;\
-                transition: 1.5s;'";
-                statBarDef.classList.add('.progressBar');
-
-                statBarSatk.style.cssText = 'width:' + tabFinal[i].stats[3].base_stat * 100 / 255 + "%;;background-color: #666666\;\
-                transition: 1.5s;'";
-                statBarSatk.classList.add('.progressBar');
-
-                statBarSdef.style.cssText = 'width:' + tabFinal[i].stats[4].base_stat * 100 / 255 + "%;;background-color: #666666\;\
-                transition: 1.5s;'";
-                statBarSdef.classList.add('.progressBar');
-
-                statBarSpd.style.cssText = 'width:' + tabFinal[i].stats[5].base_stat * 100 / 255 + "%;;background-color: #666666\;\
-                transition: 1.5s;'";
-                statBarSpd.classList.add('.progressBar');
-            }, 800);
-
-
-            /// obtenir les descriptifs en francais
-            description.innerHTML = tabFinal[i].flavor_text_entries[24].flavor_text;
-
-
-
-
-        })
-
-        ///bouton retour de modal
-        arrow.addEventListener('click', () => {
-
-            modal.classList.toggle('overlay');
-
-
-            modal.classList.toggle('modalOn');
-            modal.setAttribute('aria-hidden', 'true');
-            body.classList.toggle('scrollOnOff');
-
-
-            statBarHp.style.width = 0;
-            statBarAtk.style.width = 0;
-            statBarDef.style.width = 0;
-            statBarSatk.style.width = 0;
-            statBarSdef.style.width = 0;
-            statBarSpd.style.width = 0;
-        })
-
-
-    }
-    console.log(tabPkm);
-    console.log(tabDescription);
-    console.log(tabFinal);
 
 }
+
+
 
 
 ///créer des blocs pokémon
@@ -478,3 +483,4 @@ function FrenchType2(element) {
 
     }
 }
+
