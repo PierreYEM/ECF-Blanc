@@ -220,7 +220,7 @@ span:hover {
     height: inherit;
     position: relative;
     top: 15%;
-    filter: contrast(0%);
+    /* filter: contrast(0%); */
 }
 
 .filterOff {
