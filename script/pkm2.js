@@ -124,7 +124,6 @@ async function getPkm() {
 
 
             if (window.screen.width > 435) {
-                setTimeout(() => modalCard.classList.toggle('modal3d'), 1000);
                 pkm3d.classList.toggle('pkm3dOn');
                 pkm3d.innerHTML = `<img src=${tabFinal[i].sprites.other.home.front_default}> `;
             }
@@ -219,7 +218,6 @@ async function getPkm() {
         ///bouton retour de modal
         arrow.addEventListener('click', () => {
             if (window.screen.width > 435) {
-                modalCard.classList.toggle('modal3d');
                 pkm3d.classList.toggle('pkm3dOn');
             }
             modal.classList.toggle('overlay');
