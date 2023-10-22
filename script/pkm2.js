@@ -239,7 +239,7 @@ async function getPkm() {
             statBarSdef.style.width = 0;
             statBarSpd.style.width = 0;
         })
-        modal.addEventListener('touchmove', () => {
+        /*modal.addEventListener('touchmove', () => {
             modal.classList.toggle('overlay');
 
 
@@ -255,7 +255,7 @@ async function getPkm() {
             statBarSatk.style.width = 0;
             statBarSdef.style.width = 0;
             statBarSpd.style.width = 0;
-        })
+        }) */
 
     }
     console.log(tabPkm);
