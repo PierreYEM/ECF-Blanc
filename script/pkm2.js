@@ -83,7 +83,7 @@ async function getPkm() {
             })
         ///fusion des objets JSON///
         tabFinal[i] = { ...tabPkm[i], ...tabDescription[i] }
-
+console.log(tabFinal[1]);
 
 
         ///Images des pokemon de l'index
